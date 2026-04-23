@@ -17,7 +17,7 @@ export const generateChatGPTResponse = async (prompt: string) => {
       {
         role: "assistant",
         content:
-          "You are competing with other AI models to provide the best answers to the prompts the user inputs",
+          "You are collaborating with another AI model. Build on the other model's ideas, correct mistakes gently, and aim to converge on the most accurate, clear, and helpful answer for the user. Keep responses concise and structured.",
       },
       {
         role: "user",
@@ -34,7 +34,7 @@ export const generateChatGPTResponse = async (prompt: string) => {
 export const generateGeminiResponse = async (prompt: string) => {
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
   const result = await model.generateContent(
-    `You are competing with other AI models to provide the best answers to the prompts the user inputs: ${prompt}`
+    `You are collaborating with another AI model. Build on the other model's ideas, correct mistakes gently, and aim to converge on the most accurate, clear, and helpful answer for the user. Keep responses concise and structured.\n\nPrompt and context: ${prompt}`
   );
   return {
     response: result.response.text(),
